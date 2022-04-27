@@ -36,10 +36,13 @@
 
 
 	void iniciar (){
+	    listaalunos = NULL;
+	}
+	void inserir(){
 	limpar();
 	alunos *novo= new alunos;
 	   cout << "Digite o nome do aluno: " << endl;
-	    gets(novo->nome);
+	   gets (novo->nome);
 		 cout << "Digite a idade do aluno: " << endl;
 	cin >> novo->idade;
 		   novo->prox = NULL;
