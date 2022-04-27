@@ -1,0 +1,93 @@
+#include <iostream>
+	#include <string.h>
+	#include <conio.h>
+	#include <limits>
+	using namespace std;
+
+	 struct alunos{
+	  char nome [100];
+	   int idade;
+	    alunos *prox;
+		 }*listaalunos;
+
+		  void iniciar();
+		   void inserir();
+		    void listar();
+			 void menu();
+			  void limpar();
+
+
+	int main() {
+	 int op = -1;
+	  iniciar();
+	   while(op != 0){
+	    menu();
+		 cin >> op;
+		  if (op== 1){
+		   inserir();
+		    }
+			 else if (op == 2){
+			 listar();
+		}
+	}
+			 delete listaalunos;
+			  return 0;
+			  }
+
+
+	void iniciar (){
+	limpar();
+	alunos *novo= new alunos;
+	   cout << "Digite o nome do aluno: " << endl;
+	    gets(novo->nome);
+		 cout << "Digite a idade do aluno: " << endl;
+	cin >> novo->idade;
+		   novo->prox = NULL;
+		    if(listaalunos == NULL) {
+			 listaalunos = novo;
+			 }
+		else{
+			  alunos *p;
+	         p = listaalunos;
+	         while(p->prox !=NULL){
+	          p = p->prox;
+	          }
+	          p->prox = novo;
+	      }
+	  }
+
+
+
+
+	void listar(){
+	 alunos *p;
+	  p = listaalunos;
+	   if(p->prox == NULL) {
+	    cout << "-------------------------------- " << endl;
+		cout << "Nome do aluno: " << p->nome << endl;
+		cout << "Idade do aluno: " << p->idade << endl;
+		cout <<  "--------------------------------"  << endl;
+		}
+		else{
+		while(p != NULL) {
+		cout << "-------------------------------- " << endl;
+		cout << "Nome do aluno: " << p->nome << endl;
+		cout << "Idade do aluno: " << p->idade << endl;
+		cout <<  "-------	------------------------- " << endl;
+		 p = p->prox;
+	  }
+	}
+		   getch();
+	}
+
+
+	void menu(){
+	 system("cls");
+	  cout << "1 - Inserir" << endl;
+	   cout <<"2 - Listar" << endl;
+	    cout << "0 - Sair" << endl;
+		 }
+		  void limpar(){
+		         cin.clear();
+				  cin.ignore (numeric_limits < streamsize>::max(),'\n');
+			}
